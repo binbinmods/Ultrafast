@@ -28,7 +28,14 @@ namespace Ultrafast
         public static void LoadPrefsPostfix(ref SettingsManager __instance)
         {
             LogInfo("LoadPrefsPostfix");
-            
+            if (GameManager.Instance==null)
+            {
+                return;
+            }
+            if (EnableUltrafast.Value && GameManager.Instance.configGameSpeed == Enums.ConfigSpeed.Fast)
+            {
+                GameManager.Instance.configGameSpeed = Enums.ConfigSpeed.Ultrafast;
+            }
             return;
         }
 
